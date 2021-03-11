@@ -359,4 +359,14 @@ int main()
 ```
 ## 3.malloc特殊用法，會使指標叫出空的陣列
 ```C
+#include <stdio.h>
+#include <stlib.h>
+int a[10];
+int main()
+{
+    int b[10];
+
+    int  *p = ( int *) malloc ( sizeof( int )*10);
+    return 0;
+}
 
