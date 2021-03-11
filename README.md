@@ -1,7 +1,7 @@
 # 2020cce-0056
 
-#第1週實習課作業
-##第一題:進階題：分式化簡
+# 第1週實習課作業
+## 第一題:進階題：分式化簡
 ```C
 #include <stdio.h>
 int main()
@@ -17,7 +17,7 @@ int main()
 	printf("%d %d\n",a/c,b/c);
 }
 ```
-##第二題:進階題：讀入整數反序列印
+## 第二題:進階題：讀入整數反序列印
 ```C
 #include <stdio.h>
 int main()
@@ -37,7 +37,7 @@ int main()
 	printf("\n");
 }
 ```
-##第三題:進階題：A的B次方函數
+## 第三題:進階題：A的B次方函數
 ```C
 #include <stdio.h>
 int MYPOWER(int a,int b){
@@ -55,7 +55,7 @@ int main(void)
 	return 0;
 }
 ```
-##第四題:進階題：漸增數列相加
+## 第四題:進階題：漸增數列相加
 ```C
 #include <stdio.h>
 int main()
@@ -68,7 +68,7 @@ int main()
 	printf("%d\n",ans);
 }
 ```
-##第五題:基礎題：找零錢
+## 第五題:基礎題：找零錢
 ```C
 #include <stdio.h>
 int main()
@@ -78,7 +78,7 @@ int main()
 	printf("%d=50*%d+5*%d+1*%d\n",n,n/50,n%50/5,n%50%5);
 }
 ```
-##第六題:基礎題：因數個數
+## 第六題:基礎題：因數個數
 ```C
 #include <stdio.h>
 int main()
@@ -93,7 +93,7 @@ int main()
 	printf("%d\n",a);
 }
 ```
-##第七題:基礎題：找倍數
+## 第七題:基礎題：找倍數
 ```C
 #include <stdio.h>
 int main()
@@ -108,7 +108,7 @@ int main()
 	printf("%d\n",n);
 }
 ```
-##第八題:基礎題：整數轉換為等級 
+## 第八題:基礎題：整數轉換為等級 
 ```C
 #include <stdio.h>
 int main()
@@ -122,8 +122,8 @@ int main()
 	
 }
 ```
-#第二周上課作業
-##使用指標
+# 第二周上課作業
+## 使用指標
 ```C
 #include <stdio.h>
 int main()
@@ -137,7 +137,7 @@ int main()
     return 0;
 }
 ```
-##指標變換
+## 指標變換
 ```C
 #include <stdio.h>
 int main()
@@ -158,7 +158,7 @@ int main()
 }
 
 ```
-##陣列指標
+## 陣列指標
 ```C
 #include <stdio.h>
 int main()
@@ -179,3 +179,150 @@ int main()
 }
 
 ```
+
+# 第三周
+## 實習課第三周作業
+## 第1題 基礎題：整數間最大距離 
+```C
+#include <stdio.h>
+int main()
+{
+	int a,b,c,temp;
+	scanf("%d%d%d",&a,&b,&c);
+	if(b<a){
+		temp=a;
+		a=b;
+		b=temp;
+	}
+	if(c<a){
+		temp=c;
+		c=a;
+		a=temp;
+	}
+	if(c<b){
+		temp=c;
+		c=b;
+		b=temp;
+	}
+	printf("%d\n",c-a);
+}
+```
+## 第2題 基礎題：兩數間可被5整除的整數
+```C
+#include <stdio.h>
+int main()
+{
+	int a,b,temp;
+	scanf("%d%d",&a,&b);
+	if(b<a){
+		temp=a;
+		a=b;
+		b=temp;
+	}
+	for(int i=a;i<=b;i++){
+		if(i%5==0)printf("%d\n",i);
+	}
+}
+```
+## 第3題 基礎題：計程車資計算 
+```C
+#include <stdio.h>
+int main()
+{
+	int n,a;
+	scanf("%d",&n);
+	if(n<2000)printf("100\n");
+	else if(n>2000){
+		a=(n-2000)/500*5;
+		if(n%500!=0)a+=5;
+		printf("%d\n",a+100);
+	}
+}
+```
+## 第4題 基礎題：計算幾週與幾天 
+```C
+#include <stdio.h>
+int main()
+{
+	int n;
+	scanf("%d",&n);
+	printf("%d %d\n",n/7,n%7);
+}
+```
+## 第5題 進階題：2進位轉10進位 
+```C
+#include <stdio.h>
+int main()
+{
+	int n,ans=0,a=8;
+	scanf("%d",&n);
+	for(int i=1000;i>=1;i/=10){
+		if(n/i!=0) ans+=a;
+		a/=2;
+		n%=i;
+	}
+	printf("%d\n",ans);
+}
+```
+## 第6題 進階題：計算陣列的平方值
+```C
+#include <stdio.h>
+int main()
+{
+	int n,a[10],b;
+	scanf("%d",&n);
+	for(int i=0;i<n;i++){
+		scanf("%d",&b);
+		a[i]=b*b;
+		printf("%d,",a[i]);
+	}
+	printf("\n");
+}
+```
+## 7題 進階題：漸增數列相加
+```C
+include <stdio.h>
+int main()
+{
+	int n,ans=0;
+	scanf("%d",&n);
+	for(int i=2;i<=n;i++){
+		ans+=(i-1)*i;
+	}
+	printf("%d\n",ans);
+}
+```
+## 第8題 進階題：大小寫轉換
+```C
+#include <stdio.h>
+int main()
+{
+	char a[10];
+	int b=0;
+	scanf("%s", a);
+	while(a[b])
+	{
+		if(a[b]>='a' && a[b]<='z'){
+			a[b]-=32;
+		}
+		else if(a[b]>='A' && a[b]<='Z'){
+			a[b]+=32;
+		}
+		b++;
+	}
+	printf("%s\n", a);
+	
+}
+```
+## 正課內容
+## 1.指標宣告
+```C
+
+```
+## 2.指標宣告與使用不同
+```C
+
+```
+## 3.malloc特殊用法，會使指標叫出空的陣列
+```C
+
