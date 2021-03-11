@@ -281,7 +281,7 @@ int main()
 ```
 ## 7題 進階題：漸增數列相加
 ```C
-include <stdio.h>
+#include <stdio.h>
 int main()
 {
 	int n,ans=0;
