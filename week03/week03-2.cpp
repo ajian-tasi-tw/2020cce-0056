@@ -12,10 +12,10 @@ int main()
     int *p= &a[2];
     *p=222;
             printfAll();
-    int *p2= p+4;///�ŧi
+    int *p2= p+4;///«Å§i
     *p2=666;
             printfAll();
-    p2--;      ///�ϥ�
+    p2--;      ///¨Ï¥Î
     *p2=555;
             printfAll();
     return 0;
