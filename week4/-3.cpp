@@ -1,7 +1,7 @@
 #include <stdio.h>
-struct DATA{///«Å§i
-    float x,y,z;///©w¸q¸Ì­±¦³¤°»ò
-} point1;///ÅÜ¼Æªø±o¹³DATA,¦ÓDATA¸Ì¦³XYZ
+struct DATA{///å®£å‘Š
+    float x,y,z;///å®šç¾©è£¡é¢æœ‰ä»€éº¼
+} point1;///è®Šæ•¸é•·å¾—åƒDATA,è€ŒDATAè£¡æœ‰XYZ
 struct DATA points[5];
 int main()
 {
