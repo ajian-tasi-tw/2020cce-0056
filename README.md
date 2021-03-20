@@ -454,3 +454,141 @@ int main()
     printf("%f %f %f\n", f.x, f.y, f.z);
 }
 ```
+## 實習課作業
+## 第1題 基礎題：分開整數的每個數字 
+```C
+#include <stdio.h>
+int main()
+{
+	int n;
+	scanf("%d",&n);
+	printf("%d",n/10000);
+	n%=10000;
+	for(int i=1000;i>=1;i/=10){
+		printf("   ");
+		printf("%d",n/i);
+		n%=i;
+	}
+	
+}
+```
+## 第2題 基礎題：字元判別 
+```C
+#include <stdio.h>
+int main()
+{
+	char a;
+	scanf("%c",&a);
+	if(	a>='A' && a<='Z' ){
+		printf("U");
+	}
+	else if( a>='a' && a<='z' ){
+		printf("L");
+	}
+	else if( a>='0' && a<='9' ){
+		printf("D");
+	}
+	else {
+		printf("O");
+	}
+}
+```
+## 第3題 基礎題：數字之首 
+```C
+#include <stdio.h>
+int main(){
+	int n;
+	scanf("%d",&n);
+	while(n/10!=0){
+		n/=10;
+	}
+	printf("%d",n);
+}
+```
+## 第4題 基礎題：輸出從0到N的偶數 
+```C
+#include <stdio.h>
+int main()
+{
+	int n;
+	scanf("%d",&n);
+	for(int i=2;i<=n;i+=2){
+		printf("%d ",i);
+	}
+}
+```
+## 第5題 進階題：除惡務盡 
+```C
+#include <stdio.h>
+int main()
+{
+	char a[100],i=0;
+	scanf("%s",&a);
+	while(a[i]!=0){
+		if(a[i]!='2')printf("%c",a[i]);
+		i++;
+	}
+	printf("\n");
+}
+```
+## 第6題 進階題：擲骰統計
+```C
+#include <stdio.h>
+int main()
+{
+	char a[100],i=0,b=0,c=0,d=0,e=0,f=0,g=0;
+	scanf("%s",&a);
+	while( a[i]!=0 ){
+		if(a[i]=='1') b++;
+		else if(a[i]=='2')c++;
+		else if(a[i]=='3')d++;
+		else if(a[i]=='4')e++;
+		else if(a[i]=='5')f++;
+		else if(a[i]=='6')g++;
+		i++;
+	}
+	printf("1:%d\n",b);
+	printf("2:%d\n",c);
+	printf("3:%d\n",d);
+	printf("4:%d\n",e);
+	printf("5:%d\n",f);
+	printf("6:%d\n",g);
+}
+```
+## 第7題 進階題：函數找整數的最大數字
+```C
+#include <stdio.h>
+int max_digit(int n){
+	int a=0;
+	while(n){
+		if(n%10>a) a=n%10;
+		n/=10;
+	}
+	return a;
+}
+int main(void){
+  int n;
+  scanf("%d", &n);
+  printf("[%d]", max_digit(n));
+  return 0;
+}
+
+```
+## 第8題 進階題：星星等腰三角 
+```C
+#include <stdio.h>
+int main()
+{
+	int n;
+	scanf("%d",&n);
+	for(int i=1;i<=n;i++){
+		for(int k=i;k<n;k++){
+			printf(" ");
+		}
+		for(int p=1;p<=2*i-1;p++){
+			printf("*");
+		}
+		printf("\n");
+	}
+}
+```
