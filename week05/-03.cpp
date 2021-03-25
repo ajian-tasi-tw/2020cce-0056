@@ -7,10 +7,10 @@ int main()
     printf("%s\n",line );
     printf("%s\n",line2 );
 
-    char line3[]="majority³o¬O¦nªº¡A­n¦hªø´N¦hªø°Õ";
+    char line3[]="majorityé€™æ˜¯å¥½çš„ï¼Œè¦å¤šé•·å°±å¤šé•·å•¦";
     char line4[]={'m','a','j','o','r','i','t','y'};
     printf("%s\n",line3);
 
-    printf("§A¬Û«H¶Ü?³o¬Oline4:==%s==\n",line4);///¿ù¶Ã¤F
+    printf("ä½ ç›¸ä¿¡å—?é€™æ˜¯line4:==%s==\n",line4);///éŒ¯äº‚äº†
 }
 
