@@ -592,3 +592,77 @@ int main()
 	}
 }
 ```
+## 第5周
+## 正課內容
+## 01.字串
+```c
+#include <stdio.h>
+char line[20]="233233233233233233233";
+int main()
+{
+    char *p= line;
+    for(int i=0;line[i]!=0;i++){
+            p=&line [i];
+            char c = line[i];
+            if(c!='2')printf("%c",c);
+    }
+    printf("\n");
+}
+```
+## 02.字串宣告方式
+```C
+#include <stdio.h>
+int main()
+{
+    char line[10]="decline";
+    char line2[10]={'p','r','o','p','e','r','\0'};
+
+    printf("%s\n",line );
+    printf("%s\n",line2 );
+}
+```
+## 03.字串使用的問題
+```C
+#include <stdio.h>
+int main()
+{
+    char line[10]="decline";
+    char line2[10]={'p','r','o','p','e','r','\0'};
+
+    printf("%s\n",line );
+    printf("%s\n",line2 );
+
+    char line3[]="majority這是好的，要多長就多長啦";
+    char line4[]={'m','a','j','o','r','i','t','y'};
+    printf("%s\n",line3);
+
+    printf("你相信嗎?這是line4:==%s==\n",line4);///錯亂了
+}
+```
+## 04.字串2維陣列
+```c
+#include <stdio.h>
+int main()
+{
+	  ///左  右
+    char line[5][10]={"decline","proper","majority","bullet","shop"};
+    for(int i=0;i<5;i++){
+            printf("%s\n",line[i]);
+    }
+}
+```
+## 05. 2維陣列
+```c
+#include <stdio.h>
+int a[3][3]={ {1,2,3},{4,5,6},{7,8,9}};
+int main()
+{
+    for(int i=0; i<3;i++){
+        for(int j=0;j<3;j++){
+            printf("%d ",a[i][j]);
+        }
+        printf("\n");
+    }
+}
+```
+## 06.
