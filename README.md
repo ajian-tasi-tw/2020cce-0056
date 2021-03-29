@@ -696,23 +696,87 @@ int main()
 }
 ```
 ## 實習課
-## 第1題
+## 第1題 基礎題：N數之和 
 ```c
-
+#include <stdio.h>
+int main()
+{
+	int n,a,ans=0;
+	scanf("%d",&n);
+	for(int i=1;i<=n;i++){
+		scanf("%d",&a);
+		ans+=a;
+	}
+	printf("%d\n",ans);
+}
 ```
-## 第2題
+## 第2題 基礎題：三數極大 
 ```c
-
+#include <stdio.h>
+int main()
+{
+	int a,b,c,temp;
+	scanf("%d%d%d",&a,&b,&c);
+	if(b>a){
+		temp=b;
+		b=a;
+		a=temp;
+	}
+	if(c>a){
+		temp=c;
+		c=a;
+		a=temp;
+	}
+	if(c>b){
+		temp=c;
+		c=b;
+		b=temp;
+	}
+	printf("%d\n",a);
+}
 ```
-## 第3題
+## 第3題 基礎題：計算商數 
 ```c
-
+#include <stdio.h>
+int main()
+{
+	int a,b;
+	scanf("%d%d",&a,&b);
+	printf("%d\n",a/b);
+}
 ```
-## 第4題
+## 第4題 進階題：反序數字
 ```c
-
+#include <stdio.h>
+int main()
+{
+	int n,a=0,b;
+	scanf("%d",&n);
+	b=n;
+	while(n!=0){
+		a=a*10+(n%10);
+		n/=10;
+	}
+	printf("%d+%d=%d\n",b,a,a+b);
+}
 ```
-## 第5題
+## 第5題 進階題：絕對值函數
 ```c
-
+#include <stdio.h>
+int f(int n)
+{
+	if(n>0){
+		return n;
+	}
+	else{
+		return -n;
+	}
+}
+int main(void)
+{
+	int n;
+	scanf("%d",&n);
+	printf("[%d]",f(n));
+	return 0;
+}
 ```
