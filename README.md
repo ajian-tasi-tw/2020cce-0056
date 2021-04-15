@@ -844,7 +844,7 @@ int main()
 	}
 }
 ```
-## 第七周
+## 第八周
 ##正課 10226 hardwood 
 ```C
 #include <stdio.h>
