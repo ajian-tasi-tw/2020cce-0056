@@ -877,11 +877,15 @@ int main()
 			//	c=d/N*b; 也可以寫這個。
 				printf("%s %.4f\n",tree[i],100*b/(float)N); 
 				b=1;
+				memset(tree[i],'\0',32);
 			}
 			else {
 				b++;
 			}
 		}
+		if(t!=n-1)
+			printf("\n");
+		
 	}	
 }
 ```
