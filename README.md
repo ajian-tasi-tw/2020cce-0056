@@ -811,6 +811,7 @@ int main()
 ```
 ## UVA10420
 ```c
+#include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 char a[2000][75];
