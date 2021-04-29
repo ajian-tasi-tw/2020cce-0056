@@ -995,9 +995,45 @@ int main()
 	}
 }
 ```
-## UVA10008-4(好方法)
+## UVA10008-5(好方法)
 ```c
+#include <stdio.h>
+#include <stdlib.h>
+char line[10000];
+typedef struct
+{
+	int ans;//int ans[26];
+	char c; //char alphabet[]="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+}BOX;
+BOX array[26];
+int compare( const void *p1,const void *p2){
+	if( ((BOX*)p1)->ans > ((BOX*)p2)->ans ) return -1;
+	else if( ((BOX*)p1)->ans < ((BOX*)p2)->ans ) return +1;
+	else if( ((BOX*)p1)->c > ((BOX*)p2)->c ) return +1;
+	else if( ((BOX*)p1)->c < ((BOX*)p2)->c ) return -1;
+	else return 0;//ans相等時，要比字母。
+}
+int main()
+{
+	for(int i=0;i<26;i++) array[i].c='A'+i;
+	int n;
+	scanf("%d\n",&n);
+	
+	for(int i=0;i<n;i++){
+		gets(line);
+		for(int  k=0;line[k]!=0;k++){
+			char c = line[k];
+			if( c>='A' && c<='Z') array[c-'A'].ans++;///計算字母有幾個,再放入ans[]裡統計。
+			else if(c>='a' && c<='z') array[c-'a'].ans++;	
+		}
+	}
+	
+	qsort( array,26,sizeof(BOX),compare);
 
+	for(int i=0;i<26;i++){
+		if(array[i].ans>0)printf("%c %d\n",array[i].c,array[i].ans );
+	}
+}
 ```
 ## 實習課
 ## 第一題 基礎題：計算餘數及列印 
