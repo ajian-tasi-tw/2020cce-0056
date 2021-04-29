@@ -890,3 +890,175 @@ int main()
 	}	
 }
 ```
+## 第十周正課
+##  
+## UVA10008-1 gets可以讀一整行
+```c
+#include <stdio.h>
+char line[10000];
+int main()
+{
+	int n;
+	scanf("%d\n",&n);
+	
+	for(int i=0;i<n;i++){
+		gets(line);
+		printf("%s\n",line);
+	}///scanf讀一的東西;gets讀一整行。
+}
+```
+## UVA 10008-2
+```c
+
+```
+## UVA 10008-3
+```c
+
+```
+## UVA 10008-4
+```c
+
+```
+## 實習課
+## 第一題 基礎題：計算餘數及列印 
+```c
+#include <stdio.h>
+int main()
+{
+	int x,y;
+	printf("Enter two numbers: ");
+	scanf("%d%d",&x,&y);
+	printf("The remainder is %d\n",x%y);
+}
+```
+## 第二題 基礎題：判別正方形
+```c
+#include <stdio.h>
+int main()
+{
+	int a,b;
+	printf("Enter two numbers:  ");
+	scanf("%d%d",&a,&b);
+	if(a==b){
+		printf("It is a square ");
+	}
+	else {
+		printf("It is not a square ");
+	}
+}
+```
+## 第三題 基礎題：將一連串整數相乘 
+```c
+#include <stdio.h>
+int main()
+{
+	int n,a,ans=1;
+	printf("Enter the number of values to be processed: ");
+	scanf("%d",&n);
+	for(int i=0;i<n;i++){
+		printf("Enter a value: "); 
+		scanf("%d",&a);
+		ans*=a;
+	}
+	printf("Product of the %d values is %d",n,ans); 
+}
+```
+## 第四題 基礎題：平年月份的天數
+```c
+#include <stdio.h>
+int main()
+{
+	int n;
+	scanf("%d",&n);
+	if( n==4 || n==6 || n==9 || n==11 ){
+		printf("30");
+	}
+	else if( n==2 ){
+		printf("28");
+	}
+	else {
+		printf("31");
+	}
+}
+```
+## 第五題 進階題：最大公因數gcd
+```c
+#include <stdio.h>
+int main()
+{
+	int a,b,c=0;
+	printf("Enter two integers: \n");
+	scanf("%d%d",&a,&b);
+	for(int i=1;i<=a;i++){
+		if(a%i==0 && b%i==0){
+			c=i;
+		}
+	}
+	printf("The greatest common divisor of %d and %d is %d\n",a,b,c);
+}
+```
+## 第六題 進階題：字串長度
+```c
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+	char a[50],b[50],i=0;
+	scanf("%s%s",a,b);
+	
+	if(strlen(a)>strlen(b)){
+		printf("1");
+	}
+	else if(strlen(a)<strlen(b)){
+		printf("-1");
+	}
+	else {
+		printf("%d",strcmp(a,b));
+	}
+}
+```
+## 第七題 進階題：函數判斷質數
+```c
+#include <iostream>
+using namespace std;
+int prime(int n)
+{
+	for(int i=2;i*i<n;i++){
+		if(n%i==0){   
+			return 0;
+		}
+	}
+	return 1;
+}
+int main(){
+  int n;cin>>n;
+  cout<<"["<<prime(n)<<"]";
+  return 0;
+}
+/* 上方 C++ 的 main 函數 等價於 下方 C 的 main 函數
+int main(void){
+    int n;
+    scanf("%d", &n);
+    printf("[%d]", prime(n));
+    return 0;
+}
+*/
+```
+## 第八題 進階題：判斷迴文
+```c
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+	char a[80],b=0;
+	scanf("%s",a);
+	for(int i=0;i<strlen(a)/2;i++){
+		if(a[i]!=a[strlen(a)-1-i]){				
+			b=1;
+			printf("NO");
+			break;
+		}
+	}
+	if(b==0)printf("YES");
+}
+```
