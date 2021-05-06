@@ -1179,12 +1179,94 @@ int main()
 }
 ```
 ## 第11周正課
-##
+## 結構
+```c
+#include <stdio.h>
+unsigned char c;
+typedef unsigned char uchar ;
+uchar d;
+int main()
+{
+    c ='A';
+    d = c ;
+    printf("%c",d);
+
+}
+```
+## typedef運用
+```c
+#include <stdio.h>
+typedef struct data{ //舊名 ，利用typedef貼上DATA新名
+    char c;///字母
+    int ans;///數字
+}DATA;//新名
+///struct data listA;
+DATA listA;//變數
+
+int main()
+{
+    listA.c = 'A';
+    listA.ans=1;
+    printf("%c %d\n",listA.c,listA.ans)
+
+}
+```
+## 轉成整數的指標
+```c
+#include <stdio.h>
+#include <stdlib.h>
+int compare(const void *p1,const void *p2)
+{        ///轉成"整數的指標"/望遠鏡,準星看到的整數
+    int d1 = *( (int*)p1 );
+    int d2 = *( (int*)p2 );
+    if(d1>d2) return 1;
+    if(d1==d2) return 0;
+    if(d1<d2) return -1;
+}
+int a[10]={4,8,3,7,5,2,9,1,6,10};
+int main()
+{
+    qsort( a, 10, sizeof(int), compare);
+    for(int i=0;i<10;i++){
+        printf("%d ",a[i]);
+    }
+}
+```
+## 
 ```c
 
 ```
-
-
+## 正課格外題目 
+## UVA299 Train Swapping 
+```c
+#include <stdio.h>
+int main()
+{
+	int n,a,temp;
+	scanf("%d",&n);
+	
+	for(int i=1;i<=n;i++){
+		int c=0,b[50]={};
+		scanf("%d",&a);
+		for(int j=0;j<a;j++){
+			scanf("%d",&b[j]);
+		}
+		for(int x=0;x<a;x++){
+			for(int y=x+1;y<a;y++){
+				if(b[x]>b[y]){
+					temp=b[x];
+					b[x]=b[y];
+					b[y]=temp;
+					c++;
+				}
+			}
+		}
+		
+		printf("Optimal train swapping takes %d swaps.\n",c);
+	
+	}
+}
+```
 ## 實習課
 ##第1題 基礎題：整數二元四則運算
 ```c
