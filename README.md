@@ -1577,6 +1577,7 @@ int main()
 ```
 ## UVA11321 函示縮減法
 ```c
+#include <stdio.h>
 int a[10000];
 int swap( int i, int j)
 {
