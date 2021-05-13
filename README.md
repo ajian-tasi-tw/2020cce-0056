@@ -1459,3 +1459,171 @@ int main()
 	}
 }
 ```
+## 第12周
+## 上課內容
+## 
+```c
+
+```
+## 
+```c
+
+```
+## 
+```c
+
+```
+## 
+```c
+
+```
+## 
+```c
+
+```
+## 實習課
+## 第1題 基礎題：剩餘啤酒有幾手又幾瓶
+```c
+#include <stdio.h>
+int main()
+{
+	int a,b;
+	scanf("%d%d",&a,&b);
+	printf("%d %d",(a-(b*6))/6,(a-(b*6))%6);
+}
+```
+## 第2題 基礎題：三數最小 
+```c
+#include <stdio.h>
+int main()
+{
+	int a,b,c,temp;
+	scanf("%d%d%d",&a,&b,&c);
+	if(a<b){
+		temp=a;
+		a=b;
+		b=temp;
+	}
+	if(a<c){
+		temp=a;
+		a=c;
+		c=temp;
+	}
+	if(b<c){
+		temp=c;
+		c=b;
+		b=temp;
+	}
+	printf("%d\n",c);
+}
+```
+## 第3題 基礎題：計算立方值 
+```c
+#include <stdio.h>
+int main()
+{
+	int n;
+	for(int i=0;i<6;i++){
+		scanf("%d",&n);
+		printf("%d\n",n*n*n);
+	}
+}
+```
+## 第4題 基礎題：找千位數
+```c
+#include <stdio.h>
+int main()
+{
+	int n;
+	scanf("%d",&n);
+	if(n>10000){
+		n%=10000;
+		printf("%d",n/1000);
+	}
+	else {
+		printf("%d",n/1000);
+	}
+}
+```
+## 第5題 進階題：數字個數
+```c
+#include <stdio.h>
+int main()
+{
+	int n,a=0;
+	while(n){
+		scanf("%d",&n);
+		if(n==0){
+			break;
+		}
+		else {
+			a++;
+		}
+	}
+	printf("%d",a);
+}
+```
+## 第6題 進階題：判斷平方數
+```c
+#include <stdio.h>
+int main()
+{
+	int n,a=0;
+	scanf("%d",&n);
+	for(int i=2;i<n;i++){
+		if(i*i==n){
+			a=1;
+			printf("%d",i);
+			break;
+		}
+	}
+	if(a==0)printf("0");
+}
+```
+## 第7題 進階題：計算質數個數 
+```c
+#include <stdio.h>
+int main()
+{
+	int a,b,n=0,c=0;
+	scanf("%d%d",&a,&b);
+	for(int i=a;i<=b;i++){	
+		for(int j=2;j*j<=i;j++){		
+			if(i%j==0){//不是質數
+				c=1;
+			}
+		}
+		if(c==0){
+				n++;
+		}
+		c=0;
+	}
+	printf("%d",n);
+}
+
+```
+## 第8題 進階題：三數組合
+```c
+#include <stdio.h>
+int main()
+{
+	int a,b,c,temp;
+	scanf("%d%d%d",&a,&b,&c);
+	if(a<b){
+		temp=a;
+		a=b;
+		b=temp;
+	}
+	if(a<c){
+		temp=a;
+		a=c;
+		c=temp;
+	}
+	if(b<c){
+		temp=c;
+		c=b;
+		b=temp;
+	}
+	printf("%d",a*100+b*10+c+1);
+}
+```
