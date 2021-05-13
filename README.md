@@ -1543,23 +1543,23 @@ int main()
 		}
 		for(int i=0;i<n;i++){
 			for(int j=i+1;j<n;j++){
-				if(a[i]%m>a[j]%m){
+				if(a[i]%m>a[j]%m){//排餘數順序
 					temp=a[i];
 					a[i]=a[j];
 					a[j]=temp;
 				}
-				else if( a[i]%m==a[j]%m ){
-					if( a[i]%2==0 && a[j]%2!=0 ){
+				else if( a[i]%m==a[j]%m ){ //餘數相同時。
+					if( a[i]%2==0 && a[j]%2!=0 ){ //奇數偶數交換
 						temp=a[i];
 						a[i]=a[j];
 						a[j]=temp;
 					}
-					else if( a[i]%2!=0 && a[j]%2!=0 && a[i]<a[j]){
+					else if( a[i]%2!=0 && a[j]%2!=0 && a[i]<a[j]){  //奇數排序，大到小
 						temp=a[i];
 						a[i]=a[j];
 						a[j]=temp;
 					}
-					else if( a[i]%2==0 && a[j]%2==0 && a[i]>a[j]){
+					else if( a[i]%2==0 && a[j]%2==0 && a[i]>a[j]){ //偶數排序，小到大
 						temp=a[i];
 						a[i]=a[j];
 						a[j]=temp;
@@ -1575,9 +1575,48 @@ int main()
 	}
 }
 ```
-## 
+## UVA11321 函示縮減法
 ```c
-
+int a[10000];
+int swap( int i, int j)
+{
+	int temp=a[i];
+	a[i]=a[j];
+	a[j]=temp;
+ 	return a[i],a[j];
+}
+int main()
+{
+	int n,m;
+	while( scanf("%d%d",&n,&m)==2 ){
+		for(int i=0;i<n;i++){
+			scanf("%d",&a[i]);
+		}
+		for(int i=0;i<n;i++){
+			for(int j=i+1;j<n;j++){
+				if(a[i]%m>a[j]%m){ //排餘數順序
+					swap(i,j);
+				}
+				else if( a[i]%m==a[j]%m ){//餘數相同時。
+					if( a[i]%2==0 && a[j]%2!=0 ){//奇數偶數交換
+						swap(i,j);
+					}
+					else if( a[i]%2!=0 && a[j]%2!=0 && a[i]<a[j]){ //奇數排序，大到小
+						swap(i,j);
+					}
+					else if( a[i]%2==0 && a[j]%2==0 && a[i]>a[j]){ //偶數排序，小到大
+						swap(i,j);
+					}					
+				}
+			}
+		}	
+		printf("%d %d\n",n,m);
+		for(int i=0;i<n;i++){
+			printf("%d\n",a[i]);
+		}
+	
+	}
+}
 ```
 ## 實習課
 ## 第1題 基礎題：剩餘啤酒有幾手又幾瓶
