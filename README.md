@@ -1765,3 +1765,274 @@ int main()
 	printf("%d",a*100+b*10+c+1);
 }
 ```
+## 第13周
+## 正課
+## 互動設計-1 size 調視窗大小
+```c
+size(1024,400); //視窗大小
+background( 137 , 255 , 226 );//背景顏色
+```
+## 互動設計-2 用滑鼠互動用 mousePressed
+```c
+ void setup(){//互動，只做一次 
+   size(1024,400);
+ }
+ void draw(){//互動版本，每秒畫60次
+   if(mousePressed)background( 137 , 255 , 226 );//按下去時
+   else background(255 ,0 ,255);//否則 是這個顏色
+ }
+```
+## 互動設計-3 當案移下時，數字會增加
+```c
+void setup(){//互動，只做一次
+  size(1024,400);
+}
+void draw(){//互動版本，每秒畫60次
+  if(mousePressed)  background( 137 , 255 , 226 );//按下去時
+  else background(255 ,0 ,255);//否則 是這個顏色
+  text(a,512 ,200);//畫出文字 ///text的第一格是要秀出的參數
+}
+int a=0;
+void mousePressed(){//當按一下
+   a++;
+}
+```
+## 互動設計-4 文字加法、文字調自型
+```c
+void setup(){
+  size(1024,400);
+}
+void draw(){
+  if(mousePressed)  background( 137 , 255 , 226 );
+  else background(255 ,0 ,255);
+  textSize(55);//文字的大小可以改
+  text("沒中文Now is:"+ a ,212 ,200);//畫出文字 
+      // + 文字加法會將文字跟數字加在一起(新東西)
+}
+int a=0;
+void mousePressed(){//當按一下
+   a++;
+}
+```
+## 互動設計-5 寫時鐘
+```c
+void setup(){
+  size(1024,400); 
+}
+void draw(){
+  background( #8C61B2 );//色碼
+  int s = second();  // Values from 0 - 59
+  int m = minute();  // Values from 0 - 59
+  int h = hour();    // Values from 0 - 23 //參考文件可以找到
+  textSize(55);
+  text( h + " : " + m + " : " + s ,100,200);
+    //數字+ 字串  數字 + 字串 數字
+    // 等於字串    等於字串
+}
+```
+## 互動設計-6 
+```c
+void setup(){
+  size(1024,400); 
+  textFont( createFont("標楷體", 80));///顯示中文
+}
+void draw(){//因為系統會每秒更新，所以才會增加
+  background( #8C61B2 );//色碼
+  int s = second();  // Values from 0 - 59
+  int m = minute();  // Values from 0 - 59
+  int h = hour();    // Values from 0 - 23 ///參考文件可以找到
+  textSize(55);
+  text( h + " : " + m + " : " + s ,100,200);
+    //數字+ 字串  數字 + 字串 數字
+    // 等於字串    等於字串
+  int total = s + 60*m + 60*60*h; ///目標總秒數
+  int closeH=17 ,closeM=40,closeS=0;///結束的精確時間
+  int total2= closeS + 60*closeM + 60*60*closeH; ///目標總秒數
+  int ans = total2-total;
+  text("剩下幾秒:" + ans,100,100);
+}
+```
+## 互動設計-7 最後計算時間
+```c
+void setup(){
+  size(1024,400); 
+  textFont( createFont("標楷體", 80));///顯示中文
+}
+void draw(){//因為系統會每秒更新，所以才會增加
+  background( #8C61B2 );//色碼
+  int s = second();  // Values from 0 - 59
+  int m = minute();  // Values from 0 - 59
+  int h = hour();    // Values from 0 - 23 ///參考文件可以找到
+  textSize(55);
+  text( h + " : " + m + " : " + s ,100,200);
+    //數字+ 字串  數字 + 字串 數字
+    // 等於字串    等於字串
+  int total = s + 60*m + 60*60*h; ///目標總秒數
+  int closeH=17 ,closeM=40,closeS=0;///結束的精確時間
+  int total2= closeS + 60*closeM + 60*60*closeH; ///目標總秒數
+  int ans = total2-total;
+  text("剩下幾秒:" + ans,100,100);
+  int ansH=ans/60/60%60,ansM=ans/60%60 ,ansS=ans%60;//剩下時間運算
+  text( ansH + " : " + ansM + " : " + ansS ,100,300);//剩下時間
+}
+```
+## 實習課
+## 第1題 基礎題：正整數平方總和 
+```c
+#include <stdio.h>
+int main()
+{
+	int n,ans=0;
+	scanf("%d",&n);
+	for(int i=0;i<=n;i++){
+		ans+=i*i;
+	}
+	printf("%d",ans);
+}
+```
+## 第2題 基礎題：判斷座標的象限 
+```c
+#include <stdio.h>
+int main()
+{
+	int a,b;
+	scanf("%d%d",&a,&b);
+	if(a>0){
+		if(b>0){
+			printf("1\n");
+		}
+		else if(b<0){
+			printf("4\n");
+		}
+	}
+	if(a<0){
+		if(b>0){
+			printf("2\n");
+		}
+		else if(b<0){
+			printf("3\n");
+		}
+	}
+}
+```
+## 第3題 基礎題：輸入n (n>0)， 求n之所有因數和
+```c
+#include <stdio.h>
+int main()
+{
+	int n,ans=0;
+	scanf("%d",&n);
+	for(int  i=1;i<=n;i++){
+		if(n%i==0){
+			ans+=i;
+		}
+	}
+	printf("%d",ans);
+}
+```
+## 第4題 進階題：求11 +22+33+…+nn。 
+```c
+#include <stdio.h>
+int main()
+{
+	int n,ans=0;
+	scanf("%d",&n);
+	for(int i=1;i<=n;i++){
+		ans+=11*i;
+	}
+	printf("%d",ans);
+}
+
+```
+## 第5題 進階題：求兩數之最大公因數
+```c
+#include<iostream>
+using namespace std;
+int GCD(int a, int b){
+	int c=0;
+	for(int i=1;i<a;i++){
+		if(a%i==0 && b%i==0){
+			c=i;
+		}
+	}
+	return c;
+}
+int main(){
+  int a,b;cin>>a>>b;
+  cout<<GCD(a,b)<<endl;
+  return 0;
+
+```
+## 第6題 進階題：區間測速-超速之王 
+```c
+#include <stdio.h>
+int main()
+{
+	int a,b=9999, c;
+	for(int i=0;i<10;i++){
+		scanf("%d",&a);
+		if(a<b){
+			b=a,c=i+1;
+		}
+	}
+	printf("%d %d",c,4320/b);	
+}
+```
+## 第7題 進階題：10數排序，從大到小排好
+```c
+#include <stdio.h>
+int main()
+{
+	int a[10],temp;
+	for(int i=0;i<10;i++){
+		scanf("%d",&a[i]);
+	}
+	for(int i=0;i<10;i++){
+		for(int j=i+1;j<10;j++){
+			if(a[i]<a[j]){
+				temp=a[i];
+				a[i]=a[j];
+				a[j]=temp;
+			}
+		}
+	}
+	for(int i=0;i<10;i++){
+		printf("%d ",a[i]);
+	}
+}
+```
+## 第8題 進階題：兩數之間的3倍數總和
+```c
+#include <stdio.h>
+int main()
+{
+	int a,b,ans=0;
+	scanf("%d%d",&a,&b);
+	while(a%3!=0){
+		a++;
+	}
+	while(b%3!=0){
+		b--;
+	}
+	for(int i=a;i<=b;i+=3){
+		ans+=i;
+	}
+	printf("%d",ans);
+}
+```
+
+## 第14周
+## 正課
+## 
+```c
+
+```
+## 
+```c
+
+```
+## 實習課
+## 第1題 
+```c
+
+```
