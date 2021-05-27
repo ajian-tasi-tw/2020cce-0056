@@ -2023,10 +2023,10 @@ int main()
 
 ## 第14周
 ## 正課
-## random 隨意抽一個數字
+## 1-random 隨意抽一個數字
 ```c
 //可以再有色彩的文字後面，按右鍵可以查程式在幹嘛
-void setup(){
+void setup(){//只做一次
   float ans=random(60);  ///亂數，會是<60的福點數
   text(ans ,20,20);///畫出ans
 }
@@ -2034,7 +2034,7 @@ void draw(){
   
 }
 ```
-## 當按一次就能產生亂碼
+## 2-當按一次就能產生亂碼(互動)
 ```c
 int ans=0;
 void setup(){
@@ -2051,14 +2051,203 @@ void mousePressed(){//按一次就互動
       //改整數
 }
 ```
-## 
+## 3-洗牌功能
+```c
+//int a[]={1,2,3,4,5,6,7,8,9,10}; C語言
+int []a = {1,2,3,4,5,6,7,8,9,10};///java陣列
+int i1,i2;
+void setup(){
+   size(400,100); 
+   textSize(30);
+}
+void draw(){
+  background(#62E3C8);
+  for(int i=0;i<10;i++){
+     text(a[i], i*40,50); 
+  }
+  rect(i1*40,50,30,30);///i1方塊
+  rect(i2*40,50,30,30);///i2方塊
+}
+void mousePressed(){//當按一下就交換
+   i1=(int)random(10); //亂數選一個值
+   i2=(int)random(10); //亂數選一個值
+   int temp=a[i1];a[i1]=a[i2]; a[i2]=temp;//交換
+}
+```
+## 4-大樂透洗牌
+```c
+int []a=new int[47];//java陣列
+void setup(){
+   size(500,200);
+   textSize(30);
+   for(int i=0;i<47;i++){
+     a[i]=i; 
+   }
+   //讓a[i]的陣列裡，要先訪整齊對應的數字
+   for(int i=0;i<1000;i++){
+     int i1=(int)random(47);
+     int i2=(int)random(47);
+     int temp=a[i1];a[i1]=a[i2];a[i2]=temp;
+   }//作弊，先洗好牌，先知道號碼，等等掉出
+}
+void draw(){
+   background(#62E3B9);
+  for(int i=0;i<5;i++){
+     text(a[i], i*80, 100); 
+  }
+}
+```
+## 5-使球一顆一顆掉出來
+```c
+int []a=new int[47];//java陣列
+void setup(){
+   size(500,200);
+   textSize(30);
+   for(int i=0;i<47;i++){
+     a[i]=i; 
+   }
+   //讓a[i]的陣列裡，要先訪整齊對應的數字
+   for(int i=0;i<1000;i++){
+     int i1=(int)random(47);
+     int i2=(int)random(47);
+     int temp=a[i1];a[i1]=a[i2];a[i2]=temp;
+   }//作弊，先洗好牌，先知道號碼，等等掉出
+}
+int n=0;
+void draw(){
+   background(#62E3B9);
+  for(int i=0;i<n;i++){
+     text(a[i], i*80, 100); 
+  }
+}
+void mousePressed(){//按一下，讓數字依序出現
+   n++; 
+}
+```
+## 6-文字對齊、加球、改色
+```c
+int []a=new int[47];//java陣列
+void setup(){
+   size(500,200);
+   textSize(30);
+   for(int i=0;i<47;i++){
+     a[i]=i; 
+   }
+   //讓a[i]的陣列裡，要先訪整齊對應的數字
+   for(int i=0;i<1000;i++){
+     int i1=(int)random(47);
+     int i2=(int)random(47);
+     int temp=a[i1];a[i1]=a[i2];a[i2]=temp;
+   }//作弊，先洗好牌，先知道號碼，等等掉出
+}
+int n=0;
+void draw(){
+  background(#62E3B9);
+  textAlign(CENTER,CENTER);///文字對齊:中，中
+  for(int i=0;i<n;i++){
+     fill(255);ellipse(   i*80+40, 100, 55, 55);//ellipse是圓形
+     fill(0);text(a[i], i*80+40, 100); //fill填顏色
+                     //兩個相隔 /高度    
+  }
+}
+void mousePressed(){//按一下，讓數字依序出現
+   n++; 
+}
+```
+## 補充
 ```c
 
 ```
-## 
+
+## 實習課
+## 第1題 基礎題：大位王 
 ```c
+#include <stdio.h>
+int main()
+{
+	int n,a=10;
+	scanf("%d",&n);
+	while(n/a!=0){
+		n=n/10;
+	}
+	if(n>=0){
+		printf("%d\n",n);
+	}
+	else{
+		printf("%d\n",-n);
+	}
+}
 
 ```
+## 第2題 基礎題：輸入西元y年，判斷該y年是否為閏年
+```c
+#include <stdio.h>
+int main()
+{
+	int n;
+	scanf("%d",&n);
+	if( n%100==0 && n%400!=0){
+		printf("%d is not a leap year\n",n); 
+	}
+	else if( n%4==0 && n%100!=0 ){
+		printf("%d is a leap year.\n",n);
+	}
+	else {
+		printf("%d is not a leap year.\n",n);
+	}
+}
+```
+## 第3題 基礎題：把數字倒著印出來
+```c
+#include <stdio.h>
+int a[10];
+int main()
+{
+	for(int i=0;i<10;i++){
+		scanf("%d",&a[i]);
+	}
+	for(int i=9;i>=0;i--){
+		printf("%d ",a[i]);
+	}
+}
+```
+## 第4題 基礎題：區間測速
+```c
+#include <stdio.h>
+int main()
+{
+	int n;
+	scanf("%d",&n);
+	printf("%d",4320/n);
+}
+
+```
+## 第5題 進階題：奇數反流
+```c
+#include <stdio.h>
+int a[10];
+int main()
+{
+	int n,b,c=0;
+	scanf("%d",&n);
+	for(int i=0;i<n;i++){
+		scanf("%d",&b);
+		if(b%2!=0){
+			a[c]=b;
+			c++;
+		}
+	}
+	for(int i=c-1;i>=0;i--){
+		printf("%d ",a[i]);
+	}
+}
+```
+
+
+
+
+## 第15周
+## 正課
 ## 
 ```c
 
@@ -2075,7 +2264,7 @@ void mousePressed(){//按一次就互動
 
 
 
-## 第15周
+## 第16周
 ## 正課
 ## 
 ```c
