@@ -2290,9 +2290,87 @@ int main()
 
 ```
 ## 實習課
-## 第1題 
+## 第1題 基礎題：水杯接水
 ```c
+#include <stdio.h>
+int main()
+{
+	int a,b;
+	scanf("%d%d",&a,&b);
+	if(a%b==0){
+		printf("%d",a/b);
+	}
+	else{
+		printf("%d",(a/b)+1);
+	}
+}
+```
+## 第2題 基礎題：平面兩座標的面積 
+```c
+#include <stdio.h>
+int main()
+{
+	int x1,y1,x2,y2,temp;
+	scanf("%d%d%d%d",&x1,&y1,&x2,&y2);
+	if(x1<x2){
+		temp=x1;
+		x1=x2;
+		x2=temp;
+	}
+	if(y1<y2){
+		temp=y1;
+		y1=y2;
+		y2=temp;
+	}
+	printf("%d",(x1-x2)*(y1-y2));
+}
+```
+## 第3題 基礎題：整數向量相加
+```c
+#include <stdio.h>
+int main()
+{
+	int n,a[10],b[10];
+	scanf("%d",&n);
+	for(int i=0;i<n;i++){
+		scanf("%d",&a[i]);
+	}
+	for(int i=0;i<n;i++){
+		scanf("%d",&b[i]);
+	}
+	for(int i=0;i<n;i++){
+		printf("%d ",a[i]+b[i]);
+	}
+}
+```
+## 第4題 進階題：億萬富翁
+```c
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+	char a[16];
+	int i=0,n=0;  
+	scanf("%s",a);
+	n=strlen(a);
+	while(n){
+		printf("%c",a[i]);
+		i++;
+		n--;
+		if(n%3==0 && n/3!=0) printf(",");
+	}
+}
 
+```
+## 第5題 進階題：秒數換算
+```c
+#include <stdio.h>
+int main()
+{
+	int n;
+	scanf("%d",&n);
+	printf("%02d:%02d:%02d",n/3600,n%3600/60,n%60);
+}
 ```
 
 
