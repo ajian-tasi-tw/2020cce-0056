@@ -2281,14 +2281,108 @@ int main()
 
 ## 第15周
 ## 正課
-## 
+## 複習
 ```c
+void setup(){//設定只做一次
+   size(400,200); 
+}
+void draw(){//畫圖每秒60
+    int s = second();//0..59秒
+    if( s%2==0) background(#FFF981);
+    else background(#8BFF81);
+}
+```
+## 2-倒數計時
+```c
+void setup(){
+  size(400,200);
+  textSize(40);//放大字
+}
+void draw(){
+   int s = second();//1->59
+   background(#8BFF81);
+ ///  text( 59-s ,100 ,100);
+ ///59-增加的數會減少
+   text( 10- s%11 ,100 ,100);
+}//10~0有11個數字(就會倒數到0)
+  
+```
+## 3-去libary安裝音樂外掛，並加入進去，當按一下時會有聲音
+```c
+import processing.sound.*;//(加入)
+SoundFile player;
+void setup(){
+  size(400,200);
+  player = new SoundFile(this,"tada.mp3");//把檔案拉近來，放聲音
+}
+void draw(){
+  background(#8BFF81);
+}
+void mousePressed(){//按一下就會有聲音
+   player.play(); 
+}
+```
+## 4-可暫停/或是開始音樂
+```c
+import processing.sound.*;//(加入)
+SoundFile player;
+void setup(){
+  size(400,200);
+  player = new SoundFile(this,"bell.mp3");//把檔案拉近來，放聲音
+}
+void draw(){
+  background(#8BFF81);
+}
+void mousePressed(){///可暫停/或是開始音樂
+  if( player.isPlaying() ){
+     player.stop(); 
+  }else{
+    player.play();
+  }
+}
+
+///ctrl+k可以叫出此檔案資料夾
+```
+## 5-數字倒數到0時放聲音，且不會多太多聲音(將第二步跟第四步合在一起)
+```c
+import processing.sound.*;
+SoundFile player;
+void setup(){
+  size(400,200);
+  textSize(40);//放大字
+  player = new SoundFile(this, "tada.mp3");
+}
+void draw(){//每秒60次
+   int s = second();//1->59
+   background(#8BFF81);
+ ///  text( 59-s ,100 ,100);
+ ///59-增加的數會減少
+   text( 10- s%11 ,100 ,100);
+   if( 10-s%11 == 0 && !player.isPlaying()){
+      player.play();    //只會播放一個聲音
+   }
+}//10~0有11個數字(就會倒數到0)
 
 ```
-## 
+## 6-做成web。Processing to p5.js converter，可把java語言轉乘P5(要注意大括號要加)
 ```c
+function setup(){//設定只做一次
+   createCanvas(400,200); 
+}
+function draw(){//畫圖每秒60
+    let s = second();//0..59秒
+    if( s%2==0) {
+      background(49,45,50);
+    }
+    else{
+      background(58,114,0);
+    }
+}
 
+///網路搜尋Processing to p5.js converter，可把java語言轉乘P5
 ```
+
+
 ## 實習課
 ## 第1題 基礎題：水杯接水
 ```c
@@ -2377,6 +2471,14 @@ int main()
 
 ## 第16周
 ## 正課
+## 
+```c
+
+```
+## 
+```c
+
+```
 ## 
 ```c
 
