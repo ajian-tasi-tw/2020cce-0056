@@ -2488,7 +2488,91 @@ int main()
 
 ```
 ## 實習課
-## 第1題 
+## 第1題 進階題：大於漸增數列總和之最小整數
 ```c
-
+#include <stdio.h>
+int main()
+{
+	int k,n=1,ans=0;
+	scanf("%d",&k);
+	while(ans<=k){
+		ans+=n;
+		n++;
+	}
+	printf("%d",n-1);
+}
+```
+## 第2題 進階題：計算級數的值
+```c
+#include <stdio.h>
+int main()
+{
+	int n,ans=1;
+	scanf("%d",&n);
+	for(int i=1;i<=n;i++){
+		ans=ans+(2*i+1);
+	}
+	printf("f(%d)=%d",n,ans);
+}
+```
+## 第3題 進階題：拆解輸入的正整數
+```c
+#include <stdio.h>
+int main()
+{
+	int n,i=10;
+	scanf("%d",&n);
+	while(n!=0){
+		printf("%d ",n%i);
+		n-=(n%i);
+		i*=10;
+	}
+}
+```
+## 第4題 基礎題：計算一組任意數目的整數的總和
+```c
+#include <stdio.h>
+int main()
+{
+	int a[50],i=0,b,ans=0;
+	while(b){
+		scanf("%d",&b);
+		if(b!=0){
+			a[i]=b;
+			i++;
+		}
+	}
+	for(int j=0;j<i;j++){
+		if(a[j]>0){
+			ans+=a[j];
+		}
+	}
+	printf("%d",ans);
+}
+```
+## 第5題 基礎題：整數最大值、最小值
+```c
+#include <stdio.h>
+int a[50];
+int main()
+{
+	int b,n=0,temp;
+	while(b){
+		scanf("%d",&b);
+		if(b!=0){
+			a[n]=b;
+			n++;
+		}
+	}
+	for(int i=0;i<n;i++){
+		for(int j=i+1;j<n;j++){
+			if(a[i]>a[j]){
+				temp=a[i];
+				a[i]=a[j];
+				a[j]=temp;
+			}
+		}
+	}
+	printf("[%d,%d]",a[0],a[n-1]);	
+}
 ```
