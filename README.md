@@ -2281,7 +2281,7 @@ int main()
 
 ## 第15周
 ## 正課
-## 複習
+## 1-複習
 ```c
 void setup(){//設定只做一次
    size(400,200); 
@@ -2471,21 +2471,200 @@ int main()
 
 ## 第16周
 ## 正課
-## 
+## 1-ellipse可以畫圓
 ```c
+void setup(){//設定
+   size(400,200); 
+}
+void draw(){//每秒畫60次
+  background(#FFD26F);
+  ellipse( 50 ,50 ,80 ,80);//畫圓
+  ///       圓心,  寬  高
+}
+```
+## 2-arc( 圓心,圓心,寬,高,開始,結束(角度)) 可畫出圓弧;mouseX可以追蹤滑鼠
+```c
+void setup(){//設定
+   size(400,200); 
+}
+void draw(){//每秒畫60次
+  background(#FFD26F);
+  fill(255);//叫出顏色
+  ellipse( 50 ,50 ,80 ,80);//畫圓
+  ///       圓心,  寬  高
+  fill(255,0,0);///紅色
+  float stop=mouseX/50.0;//跟滑鼠動
+  text( stop ,100 ,100);//產生滑鼠弧度數字
+  arc( 50, 50, 80, 80,  0,  stop );///畫圓弧
+  //    圓心   寬  高 開始  結束(角度)
+  //對arc按右鍵找參考資料可以知道他如何使用。
+}
+```
+## 3-變成細長的線，弧度使用
+```c
+void setup(){//設定
+   size(400,200); 
+}
+void draw(){//每秒畫60次
+  background(#FFD26F);
+  fill(255);//白色
+  ellipse( 50 ,50 ,80 ,80);//畫圓
+  ///       圓心,  寬  高
+  fill(#488BD1);///藍色
+  float start=mouseX/50.0;
+  textSize(50);
+  text(start ,100,100);
+  arc( 50, 50, 80, 80,  0+start,  0.1+start);///畫圓弧
+  ///   圓心   寬  高      開始   結束(弧度)(前面小數點，可以調整圓弧的大小)
+  //對arc按右鍵找參考資料可以知道他如何使用。
+}
+```
+## 4-分出轉盤的24個位置(2PI是一個圓的角度，電腦用pi)
+```c
+void setup(){//設定
+   size(400,300); 
+}
+void draw(){//每秒畫60次
+  background(#FFD26F);
+  fill(255);//白色
+  ellipse( 100 ,100 ,180 ,180);//畫圓，做出外圈。
+  ///   圓心 X , Y,   寬  高
+  fill(#488BD1);///藍色
+  float start=mouseX/50.0;
+  for(int i=0;i<24;i++){///分顏色
+     float shift=2*PI*i/24.0;///2PI是一個圓的角度;寫點零是怕出錯
+     if(i%3==0) fill(100);///利用餘數知道顏色擺哪，每一個角度一個顏色
+     if(i%3==1) fill(#FFF755);
+     if(i%3==2) fill(255);
+     arc( 100, 100, 180, 180,  shift+0+start,  shift+PI/12.0+start);///畫圓弧
+                                                   //半圓 PI/12其實跟2*PI/24一樣
+  }
+}
+```
+## 5-if(i==0)可以設置一個中獎點
+```c
+void setup(){//設定
+   size(400,300); 
+}
+void draw(){//每秒畫60次
+  background(#FFD26F);
+  fill(255);//白色
+  ellipse( 100 ,100 ,180 ,180);//畫圓，做出外圈。
+  ///   圓心 X , Y,   寬  高
+  fill(#488BD1);///藍色
+  float start=mouseX/50.0;
+  for(int i=0;i<24;i++){///分顏色
+     float shift=2*PI*i/24.0;///2PI是一個圓的角度;寫點零是怕出錯
+     if(i%3==0) fill(100);///利用餘數知道顏色擺哪，每一個角度一個顏色
+     if(i%3==1) fill(#FFF755);
+     if(i%3==2) fill(255);
+     if(i==0)   fill(#FA6A53);///設定這個一塊是中獎點
+     arc( 100, 100, 180, 180,  shift+0+start,  shift+PI/12.0+start);///畫圓弧
+                                                   //半圓 PI/12其實跟2*PI/24一樣
+  }
+}
+```
+## 6-讓圓自動旋轉和停止
+```c
+void setup(){//設定
+   size(400,300); 
+}
+float start=0;///開始秒數
+void draw(){//每秒畫60次
+  background(#FFD26F);
+  if(start<10) start+=0.01;///數到10就停  //取代float start=mouseX/50.0;
+  fill(255);text( start ,200,150);
+  for(int i=0;i<24;i++){///分顏色
+     float shift=2*PI*i/24.0;///2PI是一個圓的角度;寫點零是怕出錯
+     if(i%3==0) fill(100);///利用餘數知道顏色擺哪，每一個角度一個顏色
+     if(i%3==1) fill(#FFF755);
+     if(i%3==2) fill(255);
+     if(i==0)   fill(#FA6A53);///設定這個一塊是中獎點
+     arc( 100, 100, 180, 180,  shift+0+start,  shift+PI/12.0+start);///畫圓弧
+                                                   //半圓 PI/12其實跟2*PI/24一樣
+  }
+}
 
 ```
-## 
+## 7-使速度慢慢變慢，直到停止為止
 ```c
-
+void setup(){
+   size(400,250); 
+}
+float start=0  ,v=0.07;///開始秒數，v是旋轉的速度
+void draw(){
+  background(#FFD26F);
+  if(v>0.001){///當速度大於0.01就會轉動
+    start+=v;///位置、速度、加速度(位置會+速度)
+    v*=0.99;///摩擦力會讓速度變慢(速度會+加速度)
+  }///改寫if(start<10) start+=0.05;///數到10就停//取代float start=mouseX/50.0;
+  fill(0);text( start ,200,150);textSize(30);
+  text(v, 200,180);
+  for(int i=0;i<24;i++){
+     float shift=2*PI*i/24.0;
+     if(i%3==0) fill(100);
+     if(i%3==1) fill(#FFF755);
+     if(i%3==2) fill(255);
+     if(i==0)   fill(#FA6A53);/
+     arc( 100, 100, 180, 180,  shift+0+start,  shift+PI/12.0+start);
+  }
+}
 ```
-## 
+## 8-讓每次轉動都是不同結果(使用random可以輸入亂數，決定一開始轉動的速度)
 ```c
-
+void setup(){
+   size(400,250); 
+}
+float start=0  ,v;///開始秒數///v是旋轉的速度
+void mousePressed(){
+  v= random(1); ///亂數取一個數字
+}
+void draw(){
+  background(#FFD26F);
+  if(v>0.001){///當速度大於0.01就會轉動
+    start+=v;///位置、速度、加速度(位置會+速度)
+    v*=0.99;///摩擦力會讓速度變慢(速度會+加速度)
+  }///改寫if(start<10) start+=0.05;///數到10就停//取代float start=mouseX/50.0;
+  fill(0);text( start ,200,150);textSize(30);
+  text(v, 200,180);
+  for(int i=0;i<24;i++){
+     float shift=2*PI*i/24.0;///2PI是一個圓的角度;寫點零是怕出錯
+     if(i%3==0) fill(100);
+     if(i%3==1) fill(#FFF755);
+     if(i%3==2) fill(255);
+     if(i==0)   fill(#FA6A53);///設定這個一塊是中獎點
+     arc( 100, 100, 180, 180,  shift+0+start,  shift+PI/12.0+start);///畫圓弧
+  }
+}
 ```
-## 
+## 9-加上推推樂!!(rect是畫出方塊)
 ```c
-
+void setup(){
+   size(400,260); 
+}
+float start=0  , v=0,  x=0;///開始秒數///v是旋轉的速度，X是給方塊使用的
+void mousePressed(){
+  v= random(1); ///亂數取一個數字
+}
+void draw(){
+  background(#FFD26F);
+  if(v>0.001){///當速度大於0.01就會轉動
+    start+=v;///位置、速度、加速度(位置會+速度)
+    v*=0.99;///摩擦力會讓速度變慢(速度會+加速度)
+    x +=v*2;  
+  }  ///改寫if(start<10) start+=0.05;///數到10就停//取代float start=mouseX/50.0;
+  rect(x,200, 50,50);///推推樂方塊
+  fill(0);text( start ,200,150);textSize(30);
+  text(v, 200,180);
+  for(int i=0;i<24;i++){
+     float shift=2*PI*i/24.0;///2PI是一個圓的角度;寫點零是怕出錯
+     if(i%3==0) fill(100);
+     if(i%3==1) fill(#FFF755);
+     if(i%3==2) fill(255);
+     if(i==0)   fill(#FA6A53);///設定這個一塊是中獎點
+     arc( 100, 100, 180, 180,  shift+0+start,  shift+PI/12.0+start);///畫圓弧
+  }
+}
 ```
 ## 實習課
 ## 第1題 進階題：大於漸增數列總和之最小整數
@@ -2575,4 +2754,23 @@ int main()
 	}
 	printf("[%d,%d]",a[0],a[n-1]);	
 }
+```
+
+## 第17周
+## 正課
+## 
+```c
+
+```
+## 
+```c
+
+```
+## 
+```c
+
+```
+## 
+```c
+
 ```
