@@ -2757,6 +2757,158 @@ int main()
 ```
 
 ## 第17周
+## 正課(主題:打字遊戲)
+## 1-利用變數印出字串 (String宣告字串)
+```c
+void setup(){
+  size(400,300);
+  textSize(45);
+}
+String line="Hello";//變數字串(P語言的)
+void draw(){
+   background(#8CFF6A);
+   text( line ,100 ,100);///方法1:將字串印出來
+   text("world",100,150);///方法2:也可以這樣做
+}
+```
+## 2-+的運用與key的運用
+```c
+void setup(){
+  size(400,300);
+  textSize(45);
+}
+String line="Hello";//變數字串(P語言的)
+char c='9';//字母
+void draw(){
+   background(#8CFF6A);
+   text( line+c+100 ,100 ,100);
+   text("world:"+key+key,100,150);
+}///字串的+是接起來!!!
+ ///key對應你最後按下的鍵盤字母or數字or符號
+```
+## 3-判斷是否一樣
+```c
+void setup(){
+ size(400,200);
+ textSize(40);
+}
+char c='9';//題目
+int win=0;
+void draw(){
+  background(#8CFF6A);
+  text("Press:"+c,100 ,100);
+  text("You  :"+key,100,150);
+  if( c==key ) win=1;//當win=1就贏了
+  else win=0;
+  if(win==1) text("You Win",100,50);
+}
+```
+## 4-答對時換題目charAt(i)可以更換原本字串的數值
+```c
+void setup(){
+ size(400,200);
+ textSize(40);
+}
+char c='9';//題目
+String ans="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+///java字串
+int win=0;
+void draw(){
+  background(#8CFF6A);
+  text("Press:"+c,100 ,100);
+  text("You  :"+key,100,150);
+  if( c==key ) win=1;//當win=1就贏了
+  else win=0;
+  
+  if(win==1) {
+    text("You Win",100,50);
+    int i = int(random(26+26));//亂數0~52之間決定一個整數
+    c= ans.charAt(i); //找出字串ans第i個字母
+  }
+}
+```
+## 5-keyCode可偵測上下左右鍵(往上是減)
+```c
+void setup(){
+  size(400,300);
+  textSize(45);
+}
+int x=100,y=100;
+void draw(){
+ background(#8CFF6A);
+ rect(x,y,50,50);//畫方塊
+}//左右鍵
+void keyPressed(){
+  if( keyCode == LEFT ) x-=10;
+  if( keyCode == RIGHT ) x+=10;
+  if( keyCode == UP ) y-=10;
+  if( keyCode == DOWN ) y+=10;
+}
+///keyCode是特殊鍵(上下左右等等)
+///key是普通鍵(數字字母符號等)
+///mousePressed()是偵測滑鼠、keyPressed()是偵測鍵盤
+```
+## 6-使他跑的順
+```c
+void setup(){
+  size(400,300);
+  textSize(45);
+}
+float x=100,y=100,vx=0,vy=0;
+void draw(){
+ background(#8CFF6A);
+ rect(x,y,50,50);//畫方塊
+ x +=vx;//每秒60次，等速(順)
+}
+void keyPressed(){
+  if( keyCode == LEFT ) vx=-10;
+  if( keyCode == RIGHT ) vx=+10;
+}
+void keyReleased(){
+ vx =0;
+}
+```
+## 7-整合上面做出打字遊戲-1
+```c
+String A="mother";//題目
+String line="";//輸入答案的地方一開始沒有東西
+
+void setup(){
+ size(400,300);
+ textSize(40);
+}
+void draw(){
+  background(#1B57A5);
+  text(A, 100,100);///秀出題目
+  text(line+"|",100,150);///秀出答案
+}
+void keyPressed(){
+ line = line +key; ///這樣就能打一串字
+}
+```
+## 8-加入倒退鍵(利用length()看長度substring()選擇刪除長度)
+```c
+void setup(){
+ size(400,300);
+ textSize(40);
+}
+void draw(){
+  background(#1B57A5);
+  text(A, 100,100);///秀出題目
+  text(line+"|",100,150);///秀出答案
+}
+void keyPressed(){
+  int len = line.length();//原字的長度
+  if( key>='a' && key<='z') line = line + key;//小寫
+  if( key>='A' && key<='Z') line = line + key;//大寫
+  if( key==ENTER ) { }//比對是否正確
+  //key有空白鍵、ENTER鍵、倒退鍵等
+  if( key== BACKSPACE && len>0 ) line = line.substring(0,len-1);//刪除字母
+ ///substring能找一中一個字母
+}
+```
+
+## 第18周
 ## 正課
 ## 
 ```c
