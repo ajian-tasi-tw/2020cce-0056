@@ -2909,20 +2909,95 @@ void keyPressed(){
 ```
 
 ## 第18周
-## 正課
-## 
+## 正課 開啟視訊鏡頭
+## 如何開啟視訊鏡頭
 ```c
-
+import processing.video.*; ///加入外掛要用import
+Capture cam;///global變數
+void setup(){
+  size(640,480); 
+  println( Capture.list() ); //把所有鏡頭放進來
+  cam = new Capture(this, "鏡頭" );///開啟視訊鏡頭 
+  cam.start();//開啟鏡頭
+}
+void draw(){
+  if( cam.available() ) cam.read();
+  set(0,0,cam) ;//也可以用image但會比較慢
+}
 ```
-## 
+## 開影片檔
 ```c
+import processing.video.*;
+Movie movie;
 
+void setup(){
+   size(640,480);
+   movie = new Movie(this, " .mov");//找出影片檔
+   movie.play();//只放一次，用movie.loop();可以連續放
+}///只能放影片檔
+void draw(){
+ if( movie.available() )movie.read();///如果有影片就叫出來
+ set(0,0,movie); //把影片的畫面放在0,0座標
+}
 ```
-## 
+## 可以存成圖片或影片檔
 ```c
-
+import processing.video.*; ///加入外掛要用import
+Capture cam;///global變數
+void setup(){
+  size(640,480); 
+  println( Capture.list() ); //把所有鏡頭放進來
+  cam = new Capture(this, "鏡頭" );///開啟視訊鏡頭 
+  cam.start();//開啟鏡頭
+}
+void draw(){
+  if( cam.available() ){ 
+    cam.read();
+    //save("image.png");//可以畫面截圖(裡面寫圖檔)  
+  }
+  set(0,0,cam) ;//也可以用image但會比較慢
+  saveFrame();///將每個影格都存起來
+}///可以再工具(TOOL)選擇movie maker做成影片檔(mov檔)
 ```
-## 
+## 老師的poker程式
 ```c
-
+String []face={"Spade", "Heart", "Dimand", "Club"};
+String []num={"A","2","3","4","5","6","7","8","9","10","J","Q","K"};
+int [] card= new int[52];
+void drawCard(int f, int n, int x, int y){
+fill(255);
+rect(x,y, 100,150);
+textAlign(CENTER,CENTER);
+if(f==0 || f==3) fill(0);
+else fill(255,0,0);
+textSize(20);
+text(face[f], x+50,y+40);
+textSize(60);
+text(num[n], x+50,y+90);
+}
+void setup(){
+size(600,640);
+for(int i=0; i<52; i++) card[i] = i;
+shuffleCard();
+}
+void draw(){
+background(#3442B7);
+for(int k=0; k<4; k++){
+for(int i=0; i<5; i++){
+int f=card[i+k*5]/13, n = card[i+k*5]%13;
+drawCard(f, n, i*110, k*160);
+}
+}
+}
+void shuffleCard(){
+for(int i=0; i<1000; i++){
+int a=int(random(52)), b=int(random(52));
+int temp=card[a];
+card[a]=card[b];
+card[b]=temp;
+}
+}
+void mousePressed(){
+shuffleCard();
+}
 ```
